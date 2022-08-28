@@ -10,26 +10,26 @@ const mapTpl = `
 	{{ if $r.GetMinPairs }}
 		{{ if eq $r.GetMinPairs $r.GetMaxPairs }}
 			if len({{ accessor . }}) != {{ $r.GetMinPairs }} {
-				err := {{ err . "value must contain exactly " $r.GetMinPairs " pair(s)" }}
+				err := {{ err . "必须包含" $r.GetMinPairs "对" }}
 				if !all { return err }
 				errors = append(errors, err)
 			}
 		{{ else if $r.MaxPairs }}
 			if l := len({{ accessor . }}); l < {{ $r.GetMinPairs }} || l > {{ $r.GetMaxPairs }} {
-				err := {{ err . "value must contain between " $r.GetMinPairs " and " $r.GetMaxPairs " pairs, inclusive" }}
+				err := {{ err . "必须介于" $r.GetMinPairs "至" $r.GetMaxPairs "对之间" }}
 				if !all { return err }
 				errors = append(errors, err)
 			}
 		{{ else }}
 			if len({{ accessor . }}) < {{ $r.GetMinPairs }} {
-				err := {{ err . "value must contain at least " $r.GetMinPairs " pair(s)" }}
+				err := {{ err . "至少包含" $r.GetMinPairs "对" }}
 				if !all { return err }
 				errors = append(errors, err)
 			}
 		{{ end }}
 	{{ else if $r.MaxPairs }}
 		if len({{ accessor . }}) > {{ $r.GetMaxPairs }} {
-			err := {{ err . "value must contain no more than " $r.GetMaxPairs " pair(s)" }}
+			err := {{ err . "最多包含" $r.GetMaxPairs "对" }}
 			if !all { return err }
 			errors = append(errors, err)
 		}

@@ -10,26 +10,26 @@ const repTpl = `
 	{{ if $r.GetMinItems }}
 		{{ if eq $r.GetMinItems $r.GetMaxItems }}
 			if len({{ accessor . }}) != {{ $r.GetMinItems }} {
-				err := {{ err . "value must contain exactly " $r.GetMinItems " item(s)" }}
+				err := {{ err . "必须包含" $r.GetMinItems "项" }}
 				if !all { return err }
 				errors = append(errors, err)
 			}
 		{{ else if $r.MaxItems }}
 			if l := len({{ accessor . }}); l < {{ $r.GetMinItems }} || l > {{ $r.GetMaxItems }} {
-				err := {{ err . "value must contain between " $r.GetMinItems " and " $r.GetMaxItems " items, inclusive" }}
+				err := {{ err . "必须介于" $r.GetMinItems "至" $r.GetMaxItems "项之间" }}
 				if !all { return err }
 				errors = append(errors, err)
 			}
 		{{ else }}
 			if len({{ accessor . }}) < {{ $r.GetMinItems }} {
-				err := {{ err . "value must contain at least " $r.GetMinItems " item(s)" }}
+				err := {{ err . "至少包含" $r.GetMinItems "项" }}
 				if !all { return err }
 				errors = append(errors, err)
 			}
 		{{ end }}
 	{{ else if $r.MaxItems }}
 		if len({{ accessor . }}) > {{ $r.GetMaxItems }} {
-			err := {{ err . "value must contain no more than " $r.GetMaxItems " item(s)" }}
+			err := {{ err . "最多包含" $r.GetMaxItems "项" }}
 			if !all { return err }
 			errors = append(errors, err)
 		}
