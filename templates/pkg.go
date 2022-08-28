@@ -7,6 +7,7 @@ import (
 	"github.com/lyft/protoc-gen-star/lang/go"
 	"github.com/microwe/protoc-gen-validate/templates/cc"
 	"github.com/microwe/protoc-gen-validate/templates/ccnop"
+	golang "github.com/microwe/protoc-gen-validate/templates/go"
 	"github.com/microwe/protoc-gen-validate/templates/java"
 	"github.com/microwe/protoc-gen-validate/templates/shared"
 )
